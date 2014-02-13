@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>4. Gérer les favoris et les catégories de films</title>
+
+</head>
+<body>
+<h2>4. Gérer les favoris et les catégories de films</h2>
+
+<blockquote><p><strong><img src="img/goal.png" alt="image" />Objectifs :</strong><br/>
+  - Gérer des clic utilisateurs avec une seule méthode et déterminer quel élément a été cliqué<br/>
+  - Effectuer des filtres sur des listes<br/>
+  - Appliquer une classe CSS en fonction de la valeur d'un attribut du modèle<br/>
+  - Bonus : Déclencher un evénement custom et le gérer dans le composant parent
+  - Extra Bonus : Stocker des données dans le local storage</p></blockquote>
+
+<p>  <img src="img/goal1-user-story-4.png" alt="image" />
+  <em>Résultat obtenu à la fin de ce chapitre</em></p>
+
+<h3>Gérer les catégories de films</h3>
+
+<ol>
+<li><p>Dans le fichier <code>posters.html</code>, ajoutez le code suivant au dessus du <code>div id='movies'</code> :</p>
+
+<pre><code> &lt;div id="menu" class="menu"&gt;
+   &lt;div id="all" class="item item-selected" on-click="{{showCategory}}"&gt;All&lt;/div&gt;
+   &lt;div id="playing" class="item" on-click="{{showCategory}}"&gt;Now playing&lt;/div&gt;
+   &lt;div id="upcoming" class="item" on-click="{{showCategory}}"&gt;Upcoming&lt;/div&gt;      
+   &lt;div id="favorite" class="item" on-click="{{showCategory}}"&gt;Favorites&lt;/div&gt;      
+ &lt;/div&gt;
+</code></pre>
+
+<blockquote><p><strong><img src="img/tip.png" alt="image" /> Notes :</strong><br/>
+- Les 4 <code>div</code> appellent la même méthode <code>showCategory</code>, la différenciation du <code>div</code> utilisé se fera ici via l'<code>id</code> du <code>div</code><br/>
+- Nous aurions aussi pu utiliser un attribut <code>data-menu</code> et récupérer la valeur de <code>menu</code> dans le <code>dataset</code> (<em>cf. user story précédente</em>)</p></blockquote></li>
+<li><p>Dans la classe <code>Posters</code>, créez la méthode <code>showCategory</code> qui répondra au changement de menu.</p>
+
+<pre><code>showCategory(Event e, var detail, Element target) {
+}
+</code></pre></li>
+<li><p>Dans le fichier <code>posters.dart</code>, importez le fichier <code>utils.dart</code> et dans la méthode <code>showCategory</code>, appelez la fonction <code>applySelectedCSS</code> sur la <code>target</code> avec comme prefixe <code>item</code>.</p>
+
+<p><em>Vérifiez dans Dartium le changement d'état quand vous cliquez sur un menu.</em></p></li>
+<li><p>Ajoutez dans la classe <code>MovieService</code> la méthode <code>Future&lt;List&lt;Movie&gt;&gt; getMovies(String tag);</code> qui permettra de récupérer les films ayant un tag particulier.</p></li>
+<li><p>Implémentez cette nouvelle méthode de l'interface dans votre implémentation en effectuant un filtre sur la liste des films de votre service.</p>
+
+<p><em>Ecrivez cette méthode sur une seule ligne !</em></p>
+
+<blockquote><p><strong><img src="img/tip.png" alt="image" /> Astuces :</strong>
+- On effectue un filtre sur <code>_movies</code> en vérifiant l'égalité du <code>tag</code> du film avec le <code>tag</code> passé en paramètre<br/>
+- N'oubliez pas que méthode <code>where</code> renvoie un <code>LazyIterable</code> !<br/>
+- L'égalité entre 2 objets se fait grâce à l'opérateur <code>==</code> (il est d'ailleurs possible de surcharger cet opérateur)</p></blockquote></li>
+<li><p>Dans la méthode <code>showCategory</code> de la classe <code>Posters</code>, ajoutez le code suivant qui, en fonction de l'id de l'élément sélectionné, appellera la bonne méthode du service pour mettre à jour la liste des films :</p>
+
+<pre><code>switch (target.id) {
+   case "all": moviesService.getAllMovies().then((List&lt;Movie&gt; ms) =&gt; movies = ms); break;
+   case "playing": moviesService.getMovies("now_playing").then((List&lt;Movie&gt; ms) =&gt; movies = ms); break;
+   case "upcoming": moviesService.getMovies("upcoming").then((List&lt;Movie&gt; ms) =&gt; movies = ms); break;
+   case "favorite": // La gestion des favoris est pour plus tard
+ }
+</code></pre>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- On appelle le service adéquat en fonction de l'id de la <code>target</code>
+- Le service renvoyant une <code>Future</code>, c'est dans la callback de celle-ci que l'on peut affecter la liste des films à notre propriété <code>movies</code>
+- <code>movies</code> étant <code>@observable</code>, sa modification entrainera un rafraichissement du template adéquat</p>
+
+<p><strong><img src="img/tip.png" alt="image" /> Astuce :</strong><br/>
+Le code précédent est redondant. La seule partie spécifique est l'appel de la bonne méthode du service, en fonction de l'id de la <code>target</code>. La mise à jour effective des films est identique quelque soit le service appelé !</p>
+
+<p><strong>Essayez d'améliorer ce code en factorisant le code redondant</strong></p></blockquote>
+
+<p><em>Vérifiez dans Dartium que lors d'un clic sur l'un des menus, la liste des films affichés est modifiée.</em></p></li>
+</ol>
+
+
+<h3>Gérer les favoris</h3>
+
+<ol>
+<li><p>Dans le fichier <code>poster.html</code>, modifiez le <code>span</code> gérant l'icone favori de la façon suivante :</p>
+
+<pre><code> &lt;span class="{{ movie.favorite | asFavoriteClass }}"&gt;&amp;#x2665;&lt;/span&gt;
+</code></pre>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- <code>asFavoriteClass</code>est une fonction attendant un <code>bool</code> en paramètre et qui renverra une <code>String</code> contenant la classe CSS en fonction de la valeur du paramètre
+- En faisant ainsi, toutes modifications de la valeur de <code>movie.favorite</code> sera répercutée sur la vue</p></blockquote></li>
+<li><p>Dans la classe <code>Poster</code>, implémentez le filtre Polymer <code>asFavoriteClass</code> qui prenne en paramètre un <code>bool</code> et qui retourne <code>favorite-selected</code> si le paramètre est <code>true</code> sinon qui retourne <code>favorite</code>.</p>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- Cette méthode est un filtre utilisé dans le point précédent<br/>
+- Partant d'un <code>bool</code>, elle renvoie le nom d'une classe CSS</p></blockquote></li>
+<li><p>Dans le fichier <code>poster.html</code>, modifiez à nouveau le <code>span</code> et ajoutez la gestion du clic souris comme vous l'avez déjà fait précédemment. Le nom de la méthode à appeler sera <code>flipFavorite</code> :</p></li>
+<li><p>Dans la classe <code>Poster</code>, ajoutez la méthode <code>flipFavorite</code> qui répondra au clic sur l'icone favori, et permuttez la valeur de <code>movie.favorite</code> à chaque appel.</p>
+
+<p><em>Vérifiez dans Dartium qu'un clic sur le bouton favori déclenche la permutation de son état.</em></p>
+
+<p>Si l'icone ne s'affiche pas, vérifiez bien que l'attribut <code>favorite</code> du modèle est bien <code>@observable</code> et initialisé à <code>false</code> :
+<code>
+@observable bool favorite = false;
+</code></p></li>
+<li><p>Ajoutez dans <code>MovieService</code> la méthode permettant de récupérer la liste des favoris :</p>
+
+<pre><code>Future&lt;List&lt;Movie&gt;&gt; getFavorites();
+</code></pre></li>
+<li><p>Modifiez votre implémentation du service en vous appuyant sur l'implémentation de <code>getMovies</code> et en filtrant sur la valeur de l'attribut <code>favorite</code> de <code>Movie</code>.</p></li>
+<li><p>Modifiez maintenant la méthode <code>showCategory</code> en implémentant le cas <code>favorite</code> et en appelant la méthode du service que vous venez de créer.</p></li>
+</ol>
+
+
+<p><strong>A ce stade vous devriez pouvoir ajouter un film dans vos favoris et pouvoir visualiser la liste de vos favoris</strong></p>
+
+<h2><img src="img/gift.png" alt="image" /> Bonus : enlever un favori depuis la liste des favoris</h2>
+
+<p><em>Si vous ajoutez un film dans vos favoris et que vous visualisez ensuite la liste de vos favoris, le film nouvellement ajouté apparaît. Pourtant si depuis la liste de vos favoris, vous cliquez à nouveau sur l'icone, celui-ci affiche bien son nouvel état MAIS le film n'est pas enlevé de la liste.</em></p>
+
+<ol>
+<li><p>Dans la méthode <code>flipFavorite</code> de la classe <code>Poster</code>, déclenchez grâce à la méthode <code>PolymerElement.dispatchEvent</code> un evénement personnalisé (<code>CustomEvent</code>) :</p>
+
+<pre><code>flipFavorite(Event e, var detail, Element target) =&gt; 
+ dispatchEvent(new CustomEvent("movieupdated", detail: movie ..favorite = !movie.favorite));
+</code></pre>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- On déclenche un événement personnalisé nommé <code>movieupdated</code> avec comme détail le film qui a été modifié
+- Pour pouvoir, sur la même ligne, effectuer le changement de valeur de l'attribut <code>favorite</code> du film et passer le film comme détail, on utilise l'opérateur cascade <code>..</code></p></blockquote>
+
+<p> <a href="https://api.dartlang.org/docs/channels/stable/latest/polymer/PolymerElement.html">PolymerElement API</a><br/>
+ <a href="https://api.dartlang.org/docs/channels/stable/latest/dart_html/CustomEvent.html">CustomEvent API</a></p></li>
+<li><p>Dans <code>posters.html</code> ajoutez dans le tag <code>&lt;movie-poster&gt;</code> la gestion de l'evénement <code>on-movieupdated</code> comme vous l'auriez fait pour l'événement <code>on-click</code>.</p>
+
+<pre><code>&lt;movie-poster movie="{{ m }}" on-movieupdated="{{ movieUpdated }}"&gt;&lt;/movie-poster&gt;
+</code></pre></li>
+<li><p>Ajoutez une méthode <code>movieUpdated</code> (qui sera appelée lorsque l'événement <code>on-movieupdated</code> sera déclenché) dans la classe <code>Posters</code> et implémentez le code suivant :</p>
+
+<pre><code>movieUpdated(Event e, Movie detail, Element target) {
+ if (favMenu &amp;&amp; !detail.favorite) movies = movies.where((Movie m) =&gt; m != detail).toList();
+}
+</code></pre>
+
+<p>Concernant <code>favMenu</code>, il s'agit d'une propriété de la classe <code>Posters</code>. Faites en sorte que cet attribut ait la valeur <code>true</code> lorsque vous êtes dans le menu des favoris, et <code>false</code> sinon.</p>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- Cette méthode est appelée lorsque l'événement <code>movieupdated</code> est déclenché.</p>
+
+<p><strong><img src="img/tip.png" alt="image" /> Astuce :</strong><br/>
+Il existe la méthode <code>remove</code> pour supprimer un élément. Cependant, si on utilise la méthode <code>remove</code> le favori n'est pas supprimé de la liste. Ce défaut provient du fait que <code>movies</code> est <code>@observable</code> => la vue est rafraichie lorsque l'on affecte une nouvelle liste à la propriété <strong>MAIS PAS</strong> si on change un élément dans la liste (ajout ou suppression).<br/>
+Pour faire cela, il faudrait modifier la déclaration de la propriété : <code>List&lt;Movie&gt; movies = toObservable(new List());</code> et ne plus affecter d'autres listes à <code>movies</code> mais faire uniquement des ajouts / suppressions sur celle-ci.</p></blockquote></li>
+</ol>
+
+
+<h2><img src="img/gift.png" alt="image" /> Extra Bonus : Stocker les films favoris dans le local-storage</h2>
+
+<ol>
+<li><p>Dans la classe <code>Movie</code> et à la fin du constructeur nommé <code>fromJSON</code> rajoutez les lignes suivantes :</p>
+
+<pre><code>new PathObserver(this, 'favorite').changes.listen((records) {
+   window.localStorage["${id}"] = '{ "fav" : ${records[0].newValue} }';
+});
+</code></pre>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+Il existe de nombreuses méthodes pour observer (unitairement ou des listes ou ...).
+Ici on demande à observer les changements de la propriété <code>favorite</code> sur l'instance courante et on s'abonne à ces changements.<br/>
+Lorsqu'un changement survient, la fonction anonyme est appelée avec en paramètre la liste des observations (dans ce cas-là une seule observation, le changement de valeur de <code>favorite</code>).
+Lors d'un changement de valeur, on stocke la nouvelle valeur dans une chaine JSON ayant pour clé l'<code>id</code> du film.</p>
+
+<p><strong><img src="img/tip.png" alt="image" /> Astuces :</strong><br/>
+Le fait de stocker une chaine JSON permet d'évoluer facilement et de stocker d'autres choses sans casser les éléments déjà stockés.</p></blockquote></li>
+<li><p>Au dessus du code précédent (toujours dans le constructeur nommé <code>fromJSON</code>), ajoutez le code suivant qui va permettre de charger les préférences du favori lors de la création depuis un flux JSON :</p>
+
+<pre><code>favorite = false;
+try {
+   String data = window.localStorage["${id}"];
+   if (data != null) favorite = JSON.decode(data)["fav"];
+}
+catch(e) {
+}
+</code></pre>
+
+<blockquote><p><strong><img src="img/explain.png" alt="image" /> Explications :</strong><br/>
+- On charge la valeur du favori à partir du local-storage
+- On protège le code pour éviter d'un changement de stockage qui provoquerait une erreur et ne permettrait pas à l'application de fonctionner</p></blockquote></li>
+</ol>
+
+
+<p>  ##Bravo vous venez de terminer le codelab !</p>
+
+<p>  Avant de regarder le code du répertoire user-story-final qui implémente d'autres fonctionnalités, merci de remplir le questionnaire qui vous a été envoyé par email.</p>
+
+<p>  Merci</p>
+</body>
+</html>

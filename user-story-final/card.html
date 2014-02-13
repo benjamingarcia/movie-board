@@ -1,0 +1,33 @@
+<polymer-element name="movie-card">
+  <template>
+    <div class="card">
+        <img class="poster" src="{{movie.posterPath}}">
+        <span class="{{favorite | asFavoriteClass }}" on-click="{{flipFavorite}}">&#x2665;</span>
+        <div class="content">
+          <table>
+            <tr><td colspan="6"><span class="title">{{movie.title}}</span></td></tr>
+            <tr><td colspan="6"><span class="tagline">{{movie.tagLine}}</span></td></tr>
+            <tr>
+              <td colspan="3"><span class="vote">Rating : </span><span class="rating">{{movie.voteAverage | asStars}}</span><span>{{10-movie.voteAverage | asStars}}</span></td>
+              <td colspan="3"><span class="vote">Vote count : {{movie.voteCount}}</span></td>
+            </tr>
+            <tr><td colspan="6"><span class="overview">{{movie.overview}}</span></td></tr>
+            <tr>
+              <td colspan="2"><span class="genre">Genre: {{movie.genre}}</span></td>
+              <td colspan="2"><span class="genre">Date: {{movie.releasedDate}}</span></td>
+              <td colspan="2"><span class="genre">Country: {{movie.country}}</span></td>
+            </tr>
+            <tr><td colspan="6"><textarea placeholder="Your comment here" class="comment" value="{{comment}}" multiple="multiple">{{comment}}</textarea></td></tr>
+          </table>
+          <template if="{{movie.hasTrailer}}">
+             <a class="trailer" on-click="{{openTrailer}}"><img class="trailer" src="../common/img/play.png"></a>
+          </template>
+        </div>
+        <div class="toolbar">
+          <a class="btn" on-click="{{save}}">Save</a>
+        </div>
+    </div>
+
+  </template>
+  <script type="application/dart" src="card.dart"></script>
+</polymer-element>
