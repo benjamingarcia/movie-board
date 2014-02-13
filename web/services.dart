@@ -1,51 +1,34 @@
 library movie.services;
 
+import 'models.dart';
 import 'dart:async';
 import 'dart:convert';
-import 'dart:html';
 
-import 'models.dart';
+final MovieService moviesServices = new MovieService();
 
-final MovieService moviesService = new MovieService();
-
-/// Service definition
 abstract class MovieService {
   
-  factory MovieService() => new HttpMovieService();
+  /**
+   * renvoie la liste de film.
+   */
+  Future<List<Movie>> getAllMovies(); 
   
-  Future<List<Movie>> getAllMovies();
-  
+  factory MovieService() => new InMemoryMovieService();
 }
 
-/// In memory service implementation
 class InMemoryMovieService implements MovieService {
   
   List<Movie> _movies;
   
-  InMemoryMovieService() {
-    _movies = JSON.decode(IN_MEMORY_JSON).map((Map map) => new Movie.fromJSON(map)).toList();
+  InMemoryMovieService(){
+    _movies = JSON.decode(IN_MEMORY_JSON).map((Map map) => new Movie.fromJSON(map)).tolist();
   }
   
   Future<List<Movie>> getAllMovies() => new Future(() => _movies);
-
 }
 
-/// HTTP service implementation
-class HttpMovieService implements MovieService {
-  
-  List<Movie> _movies;
-  
-  Future<List<Movie>> getAllMovies() {
-    Completer completer = new Completer();
-    HttpRequest.getString('../common/json/all.json').then(JSON.decode).then((List ms) {
-      _movies = ms.map((Map map) => new Movie.fromJSON(map)).toList();
-      completer.complete(_movies);
-    });
-    return completer.future;
-  }
-}
 
-/// HTTP response simulation
+
 const String IN_MEMORY_JSON = '''
 [
   {
@@ -380,17 +363,6 @@ const String IN_MEMORY_JSON = '''
   },
   {
   "tag": "now_playing","adult": false,
-  "id": 180894,
-  "original_title": "Ninja: Shadow of a Tear",
-  "release_date": "2013-12-31",
-  "poster_path": "/wkyQMLLh7DQBjU1a3J3oY01mFwv.jpg",
-  "popularity": 9.1473907734375,
-  "title": "Ninja: Shadow of a Tear",
-  "vote_average": 7,
-  "vote_count": 4
-  },
-  {
-  "tag": "now_playing","adult": false,
   "id": 64686,
   "original_title": "47 Ronin",
   "release_date": "2013-12-25",
@@ -487,4 +459,5 @@ const String IN_MEMORY_JSON = '''
   "title": "Force of Execution",
   "vote_average": 7.5,
   "vote_count": 4
-  }]''';
+  }]
+''';

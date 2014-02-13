@@ -1,20 +1,19 @@
 library movie.poster;
 
 import 'package:polymer/polymer.dart';
-
 import 'models.dart';
 
 @CustomTag('movie-poster')
 class Poster extends PolymerElement {
   
-  @published Movie movie = new Movie.sample();
+  @observable Movie movie = new Movie.sample();
   
   Poster.created() : super.created();
   
   bool get applyAuthorStyles => true;
-  
-  asStars(int nb) => new List.generate(nb, (_) => "\u2605").join();
-  
-  complementTo(int comp) => (int nb) => comp - nb;
+
+  asStar(int nb) => new List<String>.generate(nb, (_) => "\u2605").join();
+
+  complementTo(int comp) => (nb) => comp - nb;
   
 }
