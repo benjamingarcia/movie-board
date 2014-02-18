@@ -1,5 +1,7 @@
 library movie.models;
 
+import 'dart:html';
+import 'dart:convert';
 import 'package:polymer/polymer.dart';
 
 class Movie {
@@ -10,8 +12,19 @@ class Movie {
   @reflectable String releasedDate;
   @reflectable int voteAverage;
   @reflectable int voteCount;
-  @reflectable bool favorite;
+  @reflectable bool favorite = false;
   @reflectable String tag;
+  
+  static final Map _comparators = {
+    "default": (Movie a, Movie b) => 0,
+    "title": (Movie a, Movie b) => a.title.compareTo(b.title),
+    "vote": (Movie a, Movie b) => a.voteAverage.compareTo(b.voteAverage),
+    "favorite": (Movie a, Movie b) => a.favorite && !b.favorite ? -1 : b.favorite && !a.favorite ? 1 : 0,
+  };
+  
+  static getComparator(String field){
+    return _comparators[field];
+  }
   
   Movie.sample() {
     id = 123456;
@@ -24,12 +37,24 @@ class Movie {
   }
   
   Movie.fromJSON(Map<String, Object> json){
-    id = json['id'];
-    title = json['title'];
-    posterPath = json['poster_path'] != null ? "../common/json/images/posters${json['poster_path']}" : "../common/img/no-poster-w130.jpg";
-    releasedDate = json['release_date'];
-    voteAverage = json['vote_average'];
-    voteCount = json['vote_count'];
-    tag = json['tag'];
+    id=json['id'];
+    title=json['title'];
+    posterPath=json['poster_path'] != null ? "../common/json/images/posters${json['poster_path']}" : "../common/img/no-poster-w130.jpg";
+    releasedDate=json['release_date'];
+    voteAverage=(json['vote_average'] as num).toInt();
+    voteCount=json['vote_count'];
+    tag=json['tag'];
+    
+    favorite = false;
+    try {
+      String data = window.localStorage["${id}"];
+      if (data != null) favorite = JSON.decode(data)["fav"];
+    }
+    catch(e) {
+    }
+    
+    new PathObserver(this, 'favorite').changes.listen((records) {
+      window.localStorage["${id}"] = '{ "fav" : ${records[0].newValue} }';
+    });
   }
 }
